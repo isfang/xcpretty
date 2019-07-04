@@ -99,7 +99,9 @@ module XCPretty
     end
 
     def format_phase_success(phase_name)
-      format(phase_name.capitalize, "Succeeded")
+	    require 'xcpretty/divertor'
+	    Tuya::Divertor.instance.divert_build_success
+	    format(phase_name.capitalize, "Succeeded")
     end
 
     def format_phase_script_execution(script_name)

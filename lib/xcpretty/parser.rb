@@ -534,8 +534,7 @@ module XCPretty
       @formatting_warning = false
       formatter.format_compile_warning(warning[:file_name],
                                        warning[:file_path],
-                                       warning[:reason],
-                                       warning[:line],
+                                       warning[:reason], warning[:line],
                                        warning[:cursor])
     end
 

@@ -30,9 +30,9 @@ module XCPretty
 
     it "formats compiling errors" do
 
-	     puts @formatter.format_compile_error("file", "path/to/file", "expected valid syntax",
-	                                    "[a should",
-	                                    "         ^")
+	     # puts @formatter.format_compile_error("file", "path/to/file", "expected valid syntax",
+	     #                                "[a should",
+	     #                                "         ^")
 
       @formatter.format_compile_error("file", "path/to/file", "expected valid syntax",
                                       "[a should",
