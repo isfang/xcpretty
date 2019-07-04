@@ -1,3 +1,4 @@
+require 'xcpretty/divertor'
 require 'xcpretty/version'
 require 'xcpretty/printer'
 require 'xcpretty/syntax'
@@ -31,6 +32,7 @@ module XCPretty
 
   def self.exit_with_error(message)
     $stderr.puts "[!] #{message}"
+    puts 11111111111
     exit 1
   end
 

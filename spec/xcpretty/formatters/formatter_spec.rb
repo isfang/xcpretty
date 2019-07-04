@@ -29,6 +29,11 @@ module XCPretty
     end
 
     it "formats compiling errors" do
+
+	     puts @formatter.format_compile_error("file", "path/to/file", "expected valid syntax",
+	                                    "[a should",
+	                                    "         ^")
+
       @formatter.format_compile_error("file", "path/to/file", "expected valid syntax",
                                       "[a should",
                                       "         ^").should ==
@@ -39,6 +44,10 @@ module XCPretty
 #{@formatter.cyan("         ^")}
 
 )
+
+
+	     require 'xcpretty/divertor'
+	     Tuya::Divertor.instance.output
     end
 
     it "formats file missing errors" do

@@ -12,6 +12,8 @@ module XCPretty
     end
 
     def finish
+	    require 'xcpretty/divertor'
+	    Tuya::Divertor.instance.output
       @formatter.finish
     end
 

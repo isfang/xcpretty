@@ -1,6 +1,7 @@
 # encoding: utf-8
 require 'xcpretty/ansi'
 require 'xcpretty/parser'
+require 'xcpretty/divertor'
 
 module XCPretty
 
@@ -117,40 +118,56 @@ module XCPretty
     ASCII_WARNING = '[!]'
 
     def format_error(message)
-      "\n#{red(error_symbol + " " + message)}\n\n"
+      result = "\n#{red(error_symbol + " " + message)}\n\n"
+      Tuya::Divertor.instance.divert_errors(__method__, result)
+      result
     end
 
     def format_compile_error(file, file_path, reason, line, cursor)
-      "\n#{red(error_symbol + " ")}#{file_path}: #{red(reason)}\n\n" \
+      result = "\n#{red(error_symbol + " ")}#{file_path}: #{red(reason)}\n\n" \
         "#{line}\n#{cyan(cursor)}\n\n"
+      Tuya::Divertor.instance.divert_errors(__method__, result)
+      result
     end
 
     def format_file_missing_error(reason, file_path)
-      "\n#{red(error_symbol + " " + reason)} #{file_path}\n\n"
+      result = "\n#{red(error_symbol + " " + reason)} #{file_path}\n\n"
+      Tuya::Divertor.instance.divert_errors(__method__, result)
+      result
     end
 
     def format_compile_warning(file, file_path, reason, line, cursor)
-      "\n#{yellow(warning_symbol + ' ')}#{file_path}: #{yellow(reason)}\n\n" \
+      result = "\n#{yellow(warning_symbol + ' ')}#{file_path}: #{yellow(reason)}\n\n" \
         "#{line}\n#{cyan(cursor)}\n\n"
+      Tuya::Divertor.instance.divert_warnings(__method__, result)
+      result
     end
 
     def format_ld_warning(reason)
-      "#{yellow(warning_symbol + ' ' + reason)}"
+      result = "#{yellow(warning_symbol + ' ' + reason)}"
+      Tuya::Divertor.instance.divert_warnings(__method__, result)
+      result
     end
 
     def format_undefined_symbols(message, symbol, reference)
-      "\n#{red(error_symbol + " " + message)}\n" \
+      result = "\n#{red(error_symbol + " " + message)}\n" \
         "> Symbol: #{symbol}\n" \
         "> Referenced from: #{reference}\n\n"
+      Tuya::Divertor.instance.divert_symbols(__method__, result)
+      result
     end
 
     def format_duplicate_symbols(message, file_paths)
-      "\n#{red(error_symbol + " " + message)}\n" \
+      result = "\n#{red(error_symbol + " " + message)}\n" \
         "> #{file_paths.map { |path| path.split('/').last }.join("\n> ")}\n"
+      Tuya::Divertor.instance.divert_symbols(__method__, result)
+      result
     end
 
     def format_will_not_be_code_signed(message)
-      "#{yellow(warning_symbol + " " + message)}"
+      result = "#{yellow(warning_symbol + " " + message)}"
+      Tuya::Divertor.instance.divert_warnings(__method__, result)
+      result
     end
 
     def format_other(text)
