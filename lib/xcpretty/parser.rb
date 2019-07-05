@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+require 'xcpretty/divertor'
 module XCPretty
 
   module Matchers
@@ -519,6 +519,7 @@ module XCPretty
 
     def format_compile_error
       error = current_issue.dup
+      Tuya::Divertor.instance.divert_format_errors(__method__, error)
       @current_issue = {}
       @formatting_error = false
       formatter.format_compile_error(error[:file_name],
@@ -530,6 +531,7 @@ module XCPretty
 
     def format_compile_warning
       warning = current_issue.dup
+      Tuya::Divertor.instance.divert_format_warnings(__method__, warning)
       @current_issue = {}
       @formatting_warning = false
       formatter.format_compile_warning(warning[:file_name],
@@ -545,6 +547,7 @@ module XCPretty
         current_linker_failure[:reference]
       )
       reset_linker_format_state
+      Tuya::Divertor.instance.divert_undefined_symbols(__method__, result)
       result
     end
 
@@ -554,6 +557,7 @@ module XCPretty
         current_linker_failure[:files]
       )
       reset_linker_format_state
+      Tuya::Divertor.instance.divert_duplicate_symbols(__method__, result)
       result
     end
 
