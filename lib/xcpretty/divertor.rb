@@ -59,7 +59,8 @@ module Tuya
 		end
 
 		def divert_errors(method, content)
-			# puts "divert_errors"
+			puts "divert_errors"
+			puts content
 			divert method, content, @build_errors
 		end
 
