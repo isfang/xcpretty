@@ -34,6 +34,10 @@ module Tuya
 				puts @format_duplicate_symbols
 				puts @format_undefined_symbols
 
+				puts @build_errors
+				puts @build_symbols
+				puts @build_warnings.keys.size
+
 				output_format_build '😭 build errors :', @format_build_errors
 				output_format_build_duplicate_symbols'😭 build duplicate symbols :', @format_duplicate_symbols
 				output_format_build_undefined_symbols'😭 build undefined symbols :', @format_undefined_symbols
