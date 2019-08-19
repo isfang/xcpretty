@@ -25,8 +25,15 @@ module Tuya
 			puts "start diverting output ... #{@is_build_success}"
 
 			if @is_build_success
+				puts "qwwwwwww"
 				puts " 😏 Build Succeeded".green
 			else
+				puts "qwww"
+
+				puts @format_build_errors
+				puts @format_duplicate_symbols
+				puts @format_undefined_symbols
+
 				output_format_build '😭 build errors :', @format_build_errors
 				output_format_build_duplicate_symbols'😭 build duplicate symbols :', @format_duplicate_symbols
 				output_format_build_undefined_symbols'😭 build undefined symbols :', @format_undefined_symbols
@@ -34,44 +41,44 @@ module Tuya
 		end
 
 		def divert_build_success
-			puts "divert_build_success"
+			# puts "divert_build_success"
 			@is_build_success = true
 		end
 
 		def divert_warnings(method, content)
-			puts "divert_warnings"
+			# puts "divert_warnings"
 			divert method, content, @build_warnings
 		end
 
 		def divert_errors(method, content)
-			puts "divert_errors"
+			# puts "divert_errors"
 			divert method, content, @build_errors
 		end
 
 		def divert_symbols(method, content)
-			puts "divert_symbols"
+			# puts "divert_symbols"
 			divert method, content, @build_symbols
 		end
 
 
 		def divert_format_warnings(method, content)
-			puts "divert_format_warnings"
+			# puts "divert_format_warnings"
 			format_divert method, content, @format_build_warnings
 		end
 
 		def divert_format_errors(method, content)
-			puts "divert_format_errors"
+			# puts "divert_format_errors"
 			format_divert method, content, @format_build_errors
 		end
 
 		def divert_duplicate_symbols(method, content)
-			puts "divert_duplicate_symbols"
+			# puts "divert_duplicate_symbols"
 			format_divert_duplicate_symbols method, content, @format_duplicate_symbols
 		end
 
 
 		def divert_undefined_symbols(method, content)
-			puts "divert_undefined_symbols"
+			# puts "divert_undefined_symbols"
 			format_divert_undefined_symbols method, content, @format_undefined_symbols
 		end
 
