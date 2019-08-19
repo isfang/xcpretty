@@ -59,8 +59,8 @@ module Tuya
 		end
 
 		def divert_errors(method, content)
-			puts "divert_errors"
-			puts content
+			# puts "divert_errors"
+			# puts content
 			divert method, content, @build_errors
 		end
 
@@ -87,7 +87,7 @@ module Tuya
 
 
 		def divert_undefined_symbols(method, content)
-			# puts "divert_undefined_symbols"
+			puts "divert_undefined_symbols"
 			format_divert_undefined_symbols method, content, @format_undefined_symbols
 		end
 
