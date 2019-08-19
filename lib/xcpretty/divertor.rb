@@ -25,22 +25,26 @@ module Tuya
 			puts "start diverting output ... #{@is_build_success}"
 
 			if @is_build_success
-				puts "qwwwwwww"
+				# puts "qwwwwwww"
 				puts " 😏 Build Succeeded".green
 			else
-				puts "qwww"
+				# puts "qwww"
 
-				puts @format_build_errors
-				puts @format_duplicate_symbols
-				puts @format_undefined_symbols
-
-				puts @build_errors
-				puts @build_symbols
-				puts @build_warnings.keys.size
+				# puts @format_build_errors
+				# puts @format_duplicate_symbols
+				# puts @format_undefined_symbols
+				#
+				# puts @build_errors
+				# puts @build_symbols
+				# puts @build_warnings.keys.size
 
 				output_format_build '😭 build errors :', @format_build_errors
 				output_format_build_duplicate_symbols'😭 build duplicate symbols :', @format_duplicate_symbols
 				output_format_build_undefined_symbols'😭 build undefined symbols :', @format_undefined_symbols
+
+				output_build '😭 build errors :', @build_errors
+				output_build'😭 build symbols :', @build_symbols
+				# output_build'😭 build undefined symbols :', @forundefined_symbols
 			end
 		end
 
