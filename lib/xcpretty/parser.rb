@@ -541,6 +541,7 @@ module XCPretty
     end
 
     def format_undefined_symbols
+	    puts "format_undefined_symbols format_undefined_symbols format_undefined_symbols"
       result = formatter.format_undefined_symbols(
         current_linker_failure[:message],
         current_linker_failure[:symbol],
