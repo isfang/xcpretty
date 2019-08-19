@@ -21,6 +21,9 @@ module Tuya
 		end
 
 		def output
+
+			puts "start diverting output ... #{is_build_success}"
+
 			if @is_build_success
 				puts " 😏 Build Succeeded".green
 			else
