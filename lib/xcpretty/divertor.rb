@@ -34,36 +34,44 @@ module Tuya
 		end
 
 		def divert_build_success
+			puts "divert_build_success"
 			@is_build_success = true
 		end
 
 		def divert_warnings(method, content)
+			puts "divert_warnings"
 			divert method, content, @build_warnings
 		end
 
 		def divert_errors(method, content)
+			puts "divert_errors"
 			divert method, content, @build_errors
 		end
 
 		def divert_symbols(method, content)
+			puts "divert_symbols"
 			divert method, content, @build_symbols
 		end
 
 
 		def divert_format_warnings(method, content)
+			puts "divert_format_warnings"
 			format_divert method, content, @format_build_warnings
 		end
 
 		def divert_format_errors(method, content)
+			puts "divert_format_errors"
 			format_divert method, content, @format_build_errors
 		end
 
 		def divert_duplicate_symbols(method, content)
+			puts "divert_duplicate_symbols"
 			format_divert_duplicate_symbols method, content, @format_duplicate_symbols
 		end
 
 
 		def divert_undefined_symbols(method, content)
+			puts "divert_undefined_symbols"
 			format_divert_undefined_symbols method, content, @format_undefined_symbols
 		end
 
