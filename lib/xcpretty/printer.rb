@@ -13,6 +13,8 @@ module XCPretty
 
     def finish
 	    require 'xcpretty/divertor'
+	    require 'colored'
+	    puts "divert finish ... ".red
 	    Tuya::Divertor.instance.output
       @formatter.finish
     end
